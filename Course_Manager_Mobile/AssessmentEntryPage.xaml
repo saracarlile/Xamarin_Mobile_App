@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             x:Class="Course_Manager_Mobile.AssessmentEntryPage"
+             Title="Assessment Details">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Label Text="Assessment Name" />
+            <Entry x:Name="assessmentName" />
+            <Label  Text="Assessment Start Date:" />
+            <DatePicker  x:Name="assessmentStartDatePicker"  >
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+            </DatePicker>
+            <Label  Text="Assessment Start Date:" />
+            <DatePicker  x:Name="assessmentEndDatePicker"  >
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+            </DatePicker>
+            <Label Text="Assessment Type:" />
+            <Picker x:Name="AssessmentTypePicker" Title="Assessment Type" />
+            <Label  Text="NotificationsOn" />
+            <Switch x:Name="NotificationsOn" />
+
+            <!-- Layout children in two columns -->
+            <Grid ColumnDefinitions="*,*">
+                <Button Text="Save"
+						  Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+						  Text="Delete"
+						  Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             x:Class="Course_Manager_Mobile.CourseEntryPage"
+             Title="Course Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="View/Add Assessments"
+                     Clicked="OnAssessmentsListButtonClicked" />
+    </ContentPage.ToolbarItems>
+    <ScrollView Margin="20">
+        <!-- Layout children vertically -->
+        <StackLayout>
+            <Label  Text="Course Name:" />
+            <Entry  x:Name="courseName"/>
+            <Label  Text="Course Start Date:" />
+            <DatePicker  x:Name="courseStartDatePicker"  >
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+            </DatePicker>
+            <Label  Text="Course End Date:" />
+            <DatePicker x:Name="courseEndDatePicker">
+                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                <DatePicker.MinimumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Jan 1 2000</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MinimumDate>
+                <DatePicker.MaximumDate>
+                    <sys:DateTime x:FactoryMethod="Parse">
+                        <x:Arguments>
+                            <x:String>Dec 31 2050</x:String>
+                        </x:Arguments>
+                    </sys:DateTime>
+                </DatePicker.MaximumDate>
+            </DatePicker>
+            <Label  Text="Course Status:" />
+            <Picker x:Name="CourseStatusPicker" Title="Course Status"/>
+
+            <Label  Text="Instructor Name:" />
+            <Entry  x:Name="instructorName"/>
+            <Label  Text="Instructor Phone:" />
+            <Entry  x:Name="instructorPhone"/>
+            <Label  Text="Instructor Email:" />
+            <Entry  x:Name="instructorEmail"/>
+
+
+            <Label  Text="NotificationsOn" />
+            <Switch x:Name="NotificationsOn" />
+            <Label  Text="Course Notes:" />
+            <Editor Placeholder="Enter your course notes"
+                x:Name="courseNotes"
+                HeightRequest="70"/>
+           
+
+            
+
+            <!-- Layout children in two columns -->
+            <Grid ColumnDefinitions="*,*">
+                <Button Text="Save"
+						  Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+						  Text="Delete"
+						  Clicked="OnDeleteButtonClicked"/>
+            </Grid>
+
+            <Label  Text="Share Course Notes with Contact:" />
+            <Entry  x:Name="SMSContact"/>
+            <Button Text="Share Course Notes"  Clicked="OnSMSButtonClicked"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

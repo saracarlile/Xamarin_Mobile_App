@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+				 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				 xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+				 x:Class="Course_Manager_Mobile.TermEntryPage"
+				 Title="Term Details">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Go This Term's Courses"
+                     Clicked="OnCoursesListButtonClicked" />
+    </ContentPage.ToolbarItems>
+    <!-- Layout children vertically -->
+    <StackLayout Margin="20">
+        <Label  Text="Term Title:" />
+        <Entry  x:Name="titleTerm"/>
+        <Label  Text="Term Start Date:" />
+        <DatePicker  x:Name="StartDatePicker"  >
+            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <x:String>Jan 1 2000</x:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MinimumDate>
+            <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <x:String>Dec 31 2050</x:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MaximumDate>
+        </DatePicker>
+        <Label  Text="Term End Date:" />
+        <DatePicker x:Name="EndDatePicker">
+            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+            <DatePicker.MinimumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <x:String>Jan 1 2000</x:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MinimumDate>
+            <DatePicker.MaximumDate>
+                <sys:DateTime x:FactoryMethod="Parse">
+                    <x:Arguments>
+                        <x:String>Dec 31 2050</x:String>
+                    </x:Arguments>
+                </sys:DateTime>
+            </DatePicker.MaximumDate>
+
+        </DatePicker>
+
+        <!-- Layout children in two columns -->
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Save"
+						  Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1"
+						  Text="Delete"
+						  Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
